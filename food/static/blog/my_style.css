@@ -1,0 +1,10 @@
+.center-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-image img {
+  max-width: 65%;
+  max-height: 65%;
+}

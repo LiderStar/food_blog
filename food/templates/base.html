@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Site Metas -->
+    <title>RecipeList - Stylish Magazine Blog Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{% static 'blog/images/favicon.ico" type="image/x-icon' %}" />
+    <link rel="apple-touch-icon" href="{% static 'blog/images/apple-touch-icon.png' %}">
+    
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,800,900" rel="stylesheet"> 
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- FontAwe some Icons core CSS -->
+    <link href="{% static 'blog/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'blog/style.css' %}" rel="stylesheet">
+
+    <!-- Responsive styles for this template -->
+    <link href="{% static 'blog/css/responsive.css' %}" rel="stylesheet">
+
+    <!-- Colors for this template -->
+    <link href="{% static 'blog/css/colors.css' %}" rel="stylesheet">
+
+    <!-- Version Food CSS for this template -->
+    <link href="{% static 'blog/css/version/food.css' %}" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="{% static 'blog/my_style.css' %}" rel="stylesheet">
+
+</head>
+<body>
+    
+    <div id="wrapper">
+        <section id="cta" class="jumbotron text-center">
+
+        </section>
+
+      {% include "_inc/_header.html" %}
+
+       {% block content %} {% endblock %}
+
+         {% include "_inc/_footer.html" %}
+
+        <div class="dmtop">Scroll to Top</div>
+        
+    </div><!-- end wrapper -->
+
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/js/tether.min.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/js/custom.js' %}"></script>
+
+</body>
+</html>
