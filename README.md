@@ -93,6 +93,6 @@ Windows
 
 [BSD 3-Clause License](https://opensource.org/licenses/BSD-3-Clause)
 
-Copyright (c) 2023-present, LiderStar - Volodymir Zybin
+Copyright (c) 2023-present, LiderStar - Volodymir Zybin.
 
 
