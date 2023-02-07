@@ -5,21 +5,22 @@ from mptt.models import MPTTModel, TreeForeignKey
 from ckeditor.fields import RichTextField
 
 
-
-class Category(MPTTModel):
+class Category(models.Model):
     class Meta:
         verbose_name = 'Создать категорию'
         verbose_name_plural = "Создать категории"
 
-    class MPTTMeta:
-        order_insertion_by = ['name']
+
 
     name = models.CharField(max_length=100, help_text="Не больше 100 символов", verbose_name="Название")
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
-    parent = TreeForeignKey('self', related_name='children', on_delete=models.SET_NULL, null=True, blank=True)
+
 
     def __str__(self):
         return self.name
+
+    # def get_absolute_url(self):
+    #     return reverse('category_list', kwargs={'slug': self.slug})
 
 
 class Tag(models.Model):
@@ -44,7 +45,7 @@ class Post(models.Model):
     title = models.CharField(max_length=256, db_index=True, help_text="Не больше 256 символов", verbose_name="Название")
     text_present = RichTextField(max_length=300, verbose_name="Краткое описание", blank=True)
     text = RichTextField(verbose_name="Описание")
-    image = models.ImageField(upload_to='media/%Y/%m/%d/', default='blank-profile-picture.png',
+    image = models.ImageField(upload_to='media/%Y/%m/%d/', default='blank-picture.jpg',
                               verbose_name="Изображение")
     create_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     category = models.ForeignKey(Category, related_name="post", on_delete=models.SET_NULL, null=True)
@@ -55,14 +56,13 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('food_single', kwargs={'slug': self.category.slug, 'post_slug': self.slug })
+        return reverse('food_single', kwargs={'slug': self.category.slug, 'post_slug': self.slug})
 
 
 class Recepi(models.Model):
     class Meta:
         verbose_name = 'Создать рецепт'
         verbose_name_plural = "Создать рецепты"
-
 
     name = models.CharField(max_length=100, db_index=True, verbose_name='Название')
     serv = models.CharField(max_length=50, verbose_name='Кол-во персон')
@@ -81,7 +81,6 @@ class Comment(models.Model):
         verbose_name = 'Создать коментарий'
         verbose_name_plural = "Создать коментарии"
 
-
     name = models.CharField(max_length=50, verbose_name='Имя')
     email = models.EmailField(verbose_name='Почта')
     website = models.CharField(max_length=100, verbose_name='Сайт')
@@ -90,4 +89,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.name
-

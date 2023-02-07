@@ -35,9 +35,9 @@ class PostAdmin(admin.ModelAdmin):
 
 # Register your models here.
 @admin.register(Category)
-class AdminCategory(MPTTModelAdmin):
+class AdminCategory(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    list_display = ['name', 'parent']
+    list_display = ['name', 'slug' ]
     list_display_links = ['name']
     search_fields = ['name']
     list_filter = ('name',)
@@ -63,6 +63,7 @@ class AdminPost(PostAdmin, PostAdminForm):
     list_filter = ('category', 'title')
     readonly_fields = ('create_at', 'get_photo') # поля только для чтения
     fields = ['title', 'slug', 'category', 'author', 'tags','text_present', 'text', 'image', 'get_photo', 'create_at'] # очередность полей уже в открытом посте
+    save_as = True
     inlines = [RecipeInline]
 
 
