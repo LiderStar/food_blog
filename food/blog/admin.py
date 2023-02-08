@@ -60,7 +60,7 @@ class AdminPost(PostAdmin, PostAdminForm):
     list_display = ['title', 'author', 'create_at', 'category', 'get_photo']
     list_display_links = ['author', 'title'] # поля в виде ссылок
     search_fields = ['author', 'title'] # поля поиска
-    list_filter = ('category', 'title')
+    list_filter = ('category', 'title', 'tags')
     readonly_fields = ('create_at', 'get_photo') # поля только для чтения
     fields = ['title', 'slug', 'category', 'author', 'tags','text_present', 'text', 'image', 'get_photo', 'create_at'] # очередность полей уже в открытом посте
     save_as = True

@@ -1,0 +1,10 @@
+<div class="widget">
+    <div class="container mt-5">
+        <h2 class="center">Some tags cloud</h2>
+        <div class="tag-cloud">
+            {% for tag in tags_list %}
+            <a href="{{tag.get_absolute_url}}" class="tag1">{{ tag.name }}</a>
+           {% endfor %}
+        </div>
+    </div>
+</div>

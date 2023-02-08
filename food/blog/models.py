@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-from mptt.models import MPTTModel, TreeForeignKey
 from ckeditor.fields import RichTextField
 
 
@@ -10,29 +9,29 @@ class Category(models.Model):
         verbose_name = 'Создать категорию'
         verbose_name_plural = "Создать категории"
 
-
-
     name = models.CharField(max_length=100, help_text="Не больше 100 символов", verbose_name="Название")
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
-
 
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse('category_list', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('category_list', kwargs={'slug': self.slug})
 
 
 class Tag(models.Model):
     class Meta:
         verbose_name = 'Создать тєг'
-        verbose_name_plural = "Создать тєги"
+        verbose_name_plural = "Создать тэги"
 
     name = models.CharField(max_length=100, help_text="Не больше 100 символов", verbose_name="Тэг")
     slug = models.SlugField(max_length=50, unique=True, db_index=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('tags', kwargs={'slug': self.slug})
 
 
 class Post(models.Model):

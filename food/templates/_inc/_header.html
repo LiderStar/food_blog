@@ -1,3 +1,5 @@
+{% load menu_tags %}
+
   <header class="header">
             <div class="container">
                 <nav class="navbar navbar-inverse navbar-toggleable-md">
@@ -7,13 +9,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
-                            {% include 'blog/include/tags/nav_menu.html' %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Recipes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="food-category.html"><i class="fa fa-play-circle-o"></i> Video Recipes</a>
-                            </li>
+
+                               {% get_categories_nav%}
+
+
                             <li class="nav-item">
                                 <a class="nav-link" href="food-category.html">Restaurants</a>
                             </li>

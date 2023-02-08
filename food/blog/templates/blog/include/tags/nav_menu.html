@@ -1,7 +1,15 @@
-{% load mptt_tags %}
+<div class="widget">
+    <h2 class="widget-title">Popular Categories</h2>
+    <div class="link-widget">
 
-{#{% for category in list_category %}#}
-{#    {{ category.name }}#}
-{#{% endfor %}#}
+        {% for category in list_category %}
+            {% if forloop.counter != 1 %}
+        <ul>
+{#            <li><a href="{% url 'food_list' category.slug  %}">{{ category.name }}<span>(21)</span></a></li>#}
+            <li><a href="{{ category.get_absolute_url }}">{{ category.name }}<span>(21)</span></a></li>
 
-
+        </ul>
+            {% endif %}
+        {% endfor %}
+    </div><!-- end link-widget -->
+</div><!-- end widget -->

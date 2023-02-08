@@ -5,22 +5,22 @@
     <!-- Basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
+
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Site Metas -->
     <title>RecipeList - Stylish Magazine Blog Template</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="{% static 'blog/images/favicon.ico" type="image/x-icon' %}" />
+    <link rel="shortcut icon" href="{% static 'blog/images/favicon.ico" type="image/x-icon' %}"/>
     <link rel="apple-touch-icon" href="{% static 'blog/images/apple-touch-icon.png' %}">
-    
+
     <!-- Design fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,800,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,800,900" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'blog/css/bootstrap.css' %}" rel="stylesheet">
@@ -41,36 +41,56 @@
     <link href="{% static 'blog/css/version/food.css' %}" rel="stylesheet">
 
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
     <link href="{% static 'blog/my_style.css' %}" rel="stylesheet">
 
 </head>
 <body>
-    
-    <div id="wrapper">
-        <section id="cta" class="jumbotron text-center">
 
-        </section>
+<div id="wrapper">
+    <section id="cta" class="jumbotron text-center"></section>
 
-      {% include "_inc/_header.html" %}
+    {% include "_inc/_header.html" %}
 
-       {% block content %} {% endblock %}
+                {% block content %} {% endblock %}
 
-         {% include "_inc/_footer.html" %}
+                {% block sidebar %} {% include "_inc/_sidebar.html" %} {% endblock %}
 
-        <div class="dmtop">Scroll to Top</div>
-        
-    </div><!-- end wrapper -->
 
-    <!-- Core JavaScript
-    ================================================== -->
-    <script src="{% static 'blog/js/jquery.min.js' %}"></script>
-    <script src="{% static 'blog/js/tether.min.js' %}"></script>
-    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'blog/js/custom.js' %}"></script>
+       </div><!-- end row -->
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </section><!-- end album -->
+
+    {% include "_inc/_footer.html" %}
+
+    <div class="dmtop">Scroll to Top</div>
+
+</div><!-- end wrapper -->
+
+<!-- Core JavaScript
+================================================== -->
+<script src="{% static 'blog/js/jquery.min.js' %}"></script>
+<script src="{% static 'blog/js/tether.min.js' %}"></script>
+<script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'blog/js/custom.js' %}"></script>
 
 </body>
 </html>
