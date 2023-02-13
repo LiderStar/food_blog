@@ -63,20 +63,32 @@
        </div><!-- end row -->
         </div>
 
+{% block pagination %}
         <div class="row">
             <div class="col-md-12 text-center">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+
+                {% if page_obj.has_other_pages %}
+                    <div class="pegination">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                {% for p in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == p %}
+                                        <li class="page-item"><a class="page-link">{{ p }}</a></li>
+                                    {% elif p > page_obj.number|add:-3 and p < page_obj.number|add:3 %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                {% endif %}
             </div><!-- end col -->
         </div><!-- end row -->
+{% endblock %}
     </section><!-- end album -->
 
     {% include "_inc/_footer.html" %}

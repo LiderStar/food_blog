@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'mptt',
 
     'blog.apps.BlogConfig',
+    'contact.apps.ContactConfig',
 ]
 
 MIDDLEWARE = [
