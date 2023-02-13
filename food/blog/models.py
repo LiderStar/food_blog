@@ -48,6 +48,7 @@ class Post(models.Model):
                               verbose_name="Изображение")
     create_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     category = models.ForeignKey(Category, related_name="post", on_delete=models.SET_NULL, null=True)
+    views = models.IntegerField(default=0, verbose_name="Количество просмотров")
     tags = models.ManyToManyField(Tag, related_name="post")
     slug = models.SlugField(max_length=50, unique=True)
 

@@ -15,15 +15,14 @@ class PostAdminForm(forms.ModelForm):
         fields = '__all__'
 
 
-class RecipeInline(admin.StackedInline): # добавляет в админке к модели пост поля модели рецепты
+class RecipeInline(admin.StackedInline):  # добавляет в админке к модели пост поля модели рецепты
     model = Recepi
     extra = 1
 
 
 class PostAdmin(admin.ModelAdmin):
-    save_as = True # Должна изменить кнопку но нет  (((((
+    save_as = True  # Должна изменить кнопку но нет  (((((
     save_on_top = True
-
 
     def get_photo(self, obj):
         if obj.image:
@@ -37,11 +36,10 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class AdminCategory(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    list_display = ['name', 'slug' ]
+    list_display = ['name', 'slug']
     list_display_links = ['name']
     search_fields = ['name']
     list_filter = ('name',)
-
 
 
 @admin.register(Tag)
@@ -53,19 +51,18 @@ class AdminTag(admin.ModelAdmin):
     list_filter = ('name',)
 
 
-
 @admin.register(Post)
 class AdminPost(PostAdmin, PostAdminForm):
     prepopulated_fields = {"slug": ("title",)}
     list_display = ['title', 'author', 'create_at', 'category', 'get_photo']
-    list_display_links = ['author', 'title'] # поля в виде ссылок
-    search_fields = ['author', 'title'] # поля поиска
+    list_display_links = ['author', 'title']  # поля в виде ссылок
+    search_fields = ['author', 'title']  # поля поиска
     list_filter = ('category', 'title', 'tags')
-    readonly_fields = ('create_at', 'get_photo') # поля только для чтения
-    fields = ['title', 'slug', 'category', 'author', 'tags','text_present', 'text', 'image', 'get_photo', 'create_at'] # очередность полей уже в открытом посте
+    readonly_fields = ('create_at', 'get_photo', 'views')  # поля только для чтения
+    fields = ['title', 'slug', 'category', 'author', 'tags', 'text_present', 'text', 'image', 'get_photo', 'views',
+              'create_at']  # очередность полей уже в открытом посте
     save_as = True
     inlines = [RecipeInline]
-
 
 
 @admin.register(Recepi)
@@ -78,7 +75,6 @@ class AdminRecepi(admin.ModelAdmin, PostAdminForm):
     list_display_links = ['name', 'post']
     search_fields = ['name']
     list_filter = ('name',)
-
 
 
 @admin.register(Comment)

@@ -1,8 +1,8 @@
 <div class="widget">
-    <h2 class="widget-title">Recent Posts</h2>
+    <h2 class="widget-title">Popular Posts</h2>
     <div class="blog-list-widget">
         <div class="list-group">
-                {% for post in last_post %}
+                {% for post in posts %}
             <a href="{{ post.get_absolute_url }}"
                class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="w-100 justify-content-between">

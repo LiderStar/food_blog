@@ -4,14 +4,18 @@
     <div class="sidebar">
         <div class="widget">
             <h2 class="widget-title">Search</h2>
-            <form class="search-form">
-                <input type="text" class="form-control" placeholder="Search on the site">
+            <form class="search-form" action="{% url 'search' %}" method="get">
+                <input class="form-control" type="search" name="s" placeholder="Search on the site">
+
+                <input type="submit" value="Search">
+
             </form>
         </div><!-- end widget -->
 
 
-        {% get_categories %}
-        {% get_last_post %}
+        {% get_categories 'blog/include/tags/nav_menu.html' %}
+        {% get_last_post 5 %}
+{#        вводим 5 постов можем менять#}
 
         {% get_tags_list %}
 

@@ -33,9 +33,9 @@
                                <h3>{{ detail_post.title }}</h3>
 
                                 <div class="blog-meta big-meta">
-                                    <small><a href="single.html" title="">{{ detail_post.create_at}}</a></small>
+                                    <small>{{ detail_post.create_at}}</small>
                                     <small><a href="blog-author.html" title="">{{ detail_post.author }}</a></small>
-                                    <small><a href="#" title=""><i class="fa fa-eye"></i> 2344</a></small>
+                                    <small><i class="fa fa-eye"></i> {{ detail_post.views }}</small>
                                 </div><!-- end meta -->
 
                                 <div class="post-sharing">

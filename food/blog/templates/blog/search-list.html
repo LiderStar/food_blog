@@ -1,29 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load menu_tags %}
+
 
 {% block content %}
-    <div class="page-title wb">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                    {% if "/tags/" in request.path %}
-                         <h2><i class="fa fa-cutlery bg-red"></i> By tags: {{ f.url_parts}} </h2>
-                    {% else %}
-                        <h2><i class="fa fa-cutlery bg-red"></i> Category by: {{ all_posts.first.category.name }}</h2>
-                    {% endif %}
-                </div><!-- end col -->
-                <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Blog</a></li>
-                        <li class="breadcrumb-item active">{{ all_posts.first.category.name }}</li>
-                    </ol>
-                </div><!-- end col -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end page-title -->
-
-    <section class="section lb">
+   <section class="section lb">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
@@ -63,10 +43,6 @@
 
                         </div><!-- end blog-list -->
                     </div><!-- end page-wrapper -->
-
-
-
-
                 </div><!-- end col -->
 
 {% endblock %}
