@@ -58,6 +58,10 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('food_single', kwargs={'slug': self.category.slug, 'post_slug': self.slug})
 
+    def get_comments(self):
+        return self.comment.all()
+
+
 
 class Recepi(models.Model):
     class Meta:
@@ -83,9 +87,13 @@ class Comment(models.Model):
 
     name = models.CharField(max_length=50, verbose_name='Имя')
     email = models.EmailField(verbose_name='Почта')
-    website = models.CharField(max_length=100, verbose_name='Сайт')
+    website = models.URLField(max_length=100, blank=True, null=True, verbose_name='Сайт')
     message = models.TextField(max_length=500, verbose_name='Текст')
+    create_at = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(Post, related_name='comment', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
+
+
+

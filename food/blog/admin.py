@@ -79,7 +79,7 @@ class AdminRecepi(admin.ModelAdmin, PostAdminForm):
 
 @admin.register(Comment)
 class AdminComment(admin.ModelAdmin):
-    list_display = ['name', 'email', 'website', 'post']
+    list_display = ['name', 'email', 'website', 'create_at', 'id']
     list_display_links = ['name', 'email', 'website']
     search_fields = ['name', 'email']
     list_filter = ('name', 'email',)

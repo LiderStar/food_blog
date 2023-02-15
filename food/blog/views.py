@@ -1,10 +1,11 @@
 from django.http import HttpRequest, request
 from django.shortcuts import render
-from django.urls import resolve
-from django.views.generic import ListView, DetailView
+from django.urls import resolve, reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 from django.template import RequestContext
 
-from .models import Post, Category, Tag
+from .forms import CommentForm
+from .models import Post, Category, Tag, Comment
 from django.db.models import F
 
 
@@ -29,10 +30,10 @@ class PostList(ListView):
     def get_queryset(self):
         return Post.objects.select_related('category').filter(category__slug=self.kwargs.get("slug"))
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #
-    #     return context
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['sn'] = Post.objects.select_related('category').filter(category__slug=self.kwargs.get("slug")).count()
+        return context
 
 
 class PostDetailView(DetailView):
@@ -46,7 +47,23 @@ class PostDetailView(DetailView):
         self.object.views = F('views') + 1
         self.object.save()
         self.object.refresh_from_db()
+        context['form'] = CommentForm()
         return context
+
+
+class CreateComment(CreateView):
+    model = Comment
+    form_class = CommentForm
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs.get('pk')
+        self.object = form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return self.object.post.get_absolute_url()
+
+
 
 
 class CategoryListView(ListView):
@@ -81,6 +98,12 @@ class TagsListView(ListView):
     def get_queryset(self):
         # return Post.objects.select_related('tag').filter(tags__slug=self.kwargs.get("slug"))
         return Post.objects.filter(tags__slug=self.kwargs.get("slug"))
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        '''Вывод тэга в тайтле'''
+        context = super().get_context_data(**kwargs)
+        context['tg'] = str(Tag.objects.get(slug=self.kwargs['slug']))
+        return context
 
 
 class SearchView(ListView):

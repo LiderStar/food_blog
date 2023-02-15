@@ -26,4 +26,8 @@
   text-decoration: none;
 }
 
+.img-post {
+  max-width: 45%;
+  height: auto;
+}
 
