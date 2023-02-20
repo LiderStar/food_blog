@@ -1,0 +1,33 @@
+
+.center-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-image img {
+  max-width: 65%;
+  max-height: 65%;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tag1 {
+  background-color: #ab0012;
+  color: white !important;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 10px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.img-post {
+  max-width: 45%;
+  height: auto;
+}
+
