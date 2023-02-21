@@ -1,5 +1,6 @@
-{% load menu_tags %}
+{% load menu_tags cache %}
 
+{% cache 5000 header %}
   <header class="header">
             <div class="container">
                 <nav class="navbar navbar-inverse navbar-toggleable-md">
@@ -26,3 +27,4 @@
                 </nav>
             </div><!-- end container -->
         </header><!-- end header -->
+{% endcache %}

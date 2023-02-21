@@ -1,4 +1,5 @@
-{% load menu_tags %}
+{% load menu_tags cache %}
+{% cache 5000 sidebar %}
 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
     <div class="sidebar">
@@ -21,3 +22,4 @@
 
     </div><!-- end sidebar -->
 </div><!-- end col -->
+{% endcache %}
